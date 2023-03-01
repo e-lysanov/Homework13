@@ -10,18 +10,37 @@ public class Book {
     }
 
     public String getBookTitle() {
-        return this.bookTitle;
+        return bookTitle;
     }
 
     public Author getAuthor() {
-        return this.author;
+        return author;
     }
 
     public int getPublicationYear() {
-        return this.publicationYear;
+        return publicationYear;
     }
 
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
+    }
+// здесь писал методы вручную
+    @Override
+    public String toString() {
+        return bookTitle + " " + author + " " + publicationYear;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Book book = (Book) other;
+        return this.bookTitle.equals(book.bookTitle);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(bookTitle, author, publicationYear);
     }
 }
